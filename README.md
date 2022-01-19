@@ -1,4 +1,4 @@
-# WineOInventoryApi [![CircleCI](https://circleci.com/gh/skp96/Wine-O-Inventory-API.svg?style=svg)](https://circleci.com/gh/skp96/Wine-O-Inventory-API)
+# Wine-O Inventory Api [![CircleCI](https://circleci.com/gh/skp96/Wine-O-Inventory-API.svg?style=svg)](https://circleci.com/gh/skp96/Wine-O-Inventory-API)
 
 
 Wine-O Inventory is a web application built using Phoenix and React. The application is a simple CRUD web app that allows users to keep track of their personal wine collection.
