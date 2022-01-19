@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :wine_o_inventory_api, WineOInventoryApi.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "wine_o_inventory_api_dev",
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  hostname: System.get_env("DB_HOST"),
+  database: System.get_env("DB_NAME"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -18,11 +18,11 @@ config :wine_o_inventory_api, WineOInventoryApi.Repo,
 config :wine_o_inventory_api, WineOInventoryApiWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  http: [ip: {127, 0, 0, 1}, port: System.get_env("PORT")],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "B/tNPVmJw8csfwmSHLULjj6ga10gd2LYpbNTObIyjX+0Vaq4bbNpfMbRqcfRoWTf",
+  secret_key_base: System.get_env("SECRET_KEY"),
   watchers: []
 
 # ## SSL Support

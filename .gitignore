@@ -22,3 +22,5 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 wine_o_inventory_api-*.tar
 
+# Environment Variables
+/.envrc
