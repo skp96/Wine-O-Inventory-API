@@ -1,6 +1,5 @@
 # WineOInventoryApi [![CircleCI](https://circleci.com/gh/skp96/Wine-O-Inventory-API.svg?style=svg)](https://circleci.com/gh/skp96/Wine-O-Inventory-API)
 
-------
 
 Wine-O Inventory is a web application built using Phoenix and React. The application is a simple CRUD web app that allows users to keep track of their personal wine collection.
 
@@ -8,7 +7,6 @@ This repository contains the source code for Wine-O Inventory's backend. The cod
 
 ## Installation
 
-------
 
 Before installing Phoenix, you will need to install a few dependencies in your Operating System. 
 
@@ -22,7 +20,6 @@ Before installing Phoenix, you will need to install a few dependencies in your O
 
 ## How to Set up Locally
 
-------
 
 1. Clone the repository
 
@@ -54,7 +51,6 @@ $ mix phx.server # or inside IEx with iex -S mix phx.server
 
 ## How to Run Tests
 
-------
 
 ```
 $ mix test
