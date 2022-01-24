@@ -7,6 +7,7 @@ defmodule WineOInventoryApiWeb.WineView do
 
     def render("wine.json", %{wine: wine}) do
         %{
+            id: wine.id,
             name: wine.name,
             description: wine.description,
             rating: wine.rating,
