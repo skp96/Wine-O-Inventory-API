@@ -15,6 +15,7 @@ defmodule WineOInventoryApi.Products.Wine do
   def changeset(wine, attrs) do
     wine
     |> cast(attrs, [:name, :description, :rating, :quantity])
+    |> validate_inclusion(:rating, 0..5)
     |> validate_required([:name, :description, :rating, :quantity])
   end
 end

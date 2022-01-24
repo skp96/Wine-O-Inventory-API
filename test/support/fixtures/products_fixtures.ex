@@ -14,7 +14,7 @@ defmodule WineOInventoryApi.ProductsFixtures do
         description: "some description",
         name: "some name",
         quantity: 42,
-        rating: 42
+        rating: 5
       })
       |> WineOInventoryApi.Products.create_wine()
 

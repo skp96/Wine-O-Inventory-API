@@ -21,13 +21,13 @@ defmodule WineOInventoryApi.ProductsTest do
     end
 
     test "create_wine/1 with valid data creates a wine" do
-      valid_attrs = %{description: "some description", name: "some name", quantity: 42, rating: 42}
+      valid_attrs = %{description: "some description", name: "some name", quantity: 42, rating: 5}
 
       assert {:ok, %Wine{} = wine} = Products.create_wine(valid_attrs)
       assert wine.description == "some description"
       assert wine.name == "some name"
       assert wine.quantity == 42
-      assert wine.rating == 42
+      assert wine.rating == 5
     end
 
     test "create_wine/1 with invalid data returns error changeset" do
@@ -36,13 +36,13 @@ defmodule WineOInventoryApi.ProductsTest do
 
     test "update_wine/2 with valid data updates the wine" do
       wine = wine_fixture()
-      update_attrs = %{description: "some updated description", name: "some updated name", quantity: 43, rating: 43}
+      update_attrs = %{description: "some updated description", name: "some updated name", quantity: 43, rating: 4}
 
       assert {:ok, %Wine{} = wine} = Products.update_wine(wine, update_attrs)
       assert wine.description == "some updated description"
       assert wine.name == "some updated name"
       assert wine.quantity == 43
-      assert wine.rating == 43
+      assert wine.rating == 4
     end
 
     test "update_wine/2 with invalid data returns error changeset" do
