@@ -7,7 +7,9 @@ defmodule WineOInventoryApiWeb.Router do
 
   scope "/api", WineOInventoryApiWeb do
     pipe_through :api
+
     get "/health-check", HealthCheckController, :show
+    get "/wines", WineController, :index
   end
 
   # Enables LiveDashboard only for development
