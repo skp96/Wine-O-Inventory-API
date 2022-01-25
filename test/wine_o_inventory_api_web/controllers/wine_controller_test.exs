@@ -4,7 +4,7 @@ defmodule WineOInventoryApiWeb.WineControllerTest do
     describe "index" do
         test "list all wines", %{conn: conn} do
             conn = get(conn, Routes.wine_path(conn, :index))
-            assert json_response(conn, 200)["wines"] == []
+            assert json_response(conn, 200) == []
         end
     end
 

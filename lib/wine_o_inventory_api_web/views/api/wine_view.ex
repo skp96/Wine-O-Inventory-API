@@ -2,7 +2,7 @@ defmodule WineOInventoryApiWeb.WineView do
     use WineOInventoryApiWeb, :view
 
     def render("index.json", %{wines: wines}) do
-        %{wines: render_many(wines, WineOInventoryApiWeb.WineView, "wine.json")}
+        render_many(wines, WineOInventoryApiWeb.WineView, "wine.json")
     end
 
     def render("wine.json", %{wine: wine}) do

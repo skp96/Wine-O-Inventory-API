@@ -6,9 +6,9 @@ defmodule WineOInventoryApiWeb.WineViewTest do
     describe "index.json render" do
         test "renders list of all wines" do
             wine = wine_fixture()
-            wines = %{wines: [wine]}
-            result_of_render = WineView.render("index.json", wines)
-            assert result_of_render["wines"] != []
+            wines = [wine]
+            result_of_render = WineView.render("index.json", wines: wines)
+            assert result_of_render != []
         end
     end
 end
