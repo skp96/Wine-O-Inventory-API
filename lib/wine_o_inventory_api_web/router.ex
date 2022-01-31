@@ -3,6 +3,7 @@ defmodule WineOInventoryApiWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug WineOInventoryApiWeb.Plugs.CheckJsonSpec
   end
 
   scope "/api", WineOInventoryApiWeb do
@@ -10,6 +11,7 @@ defmodule WineOInventoryApiWeb.Router do
 
     get "/health-check", HealthCheckController, :show
     get "/wines", WineController, :index
+    post "/wines", WineController, :create
   end
 
   # Enables LiveDashboard only for development

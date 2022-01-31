@@ -4,8 +4,16 @@ defmodule WineOInventoryApiWeb.ErrorView do
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
 
+  def translate_errors(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, &translate_error/1)
+  end
+
   def render("404.json", _assigns) do
     %{errors: %{detail: "Resource Not Found"}}
+  end
+
+  def render("422.json", %{changeset: changeset}) do
+    %{errors: translate_errors(changeset)}
   end
 
   def render("500.json", _assigns) do

@@ -5,6 +5,15 @@ defmodule WineOInventoryApiWeb.WineView do
         render_many(wines, WineOInventoryApiWeb.WineView, "wine.json")
     end
 
+    def render("show.json", %{wine: wine}) do
+        %{
+            data: %{
+                type: "wines",
+                attributes: render_one(wine, WineOInventoryApiWeb.WineView, "wine.json")
+            }
+        }
+    end
+
     def render("wine.json", %{wine: wine}) do
         %{
             id: wine.id,
