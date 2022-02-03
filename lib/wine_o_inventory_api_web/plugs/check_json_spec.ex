@@ -11,12 +11,12 @@ defmodule WineOInventoryApiWeb.Plugs.CheckJsonSpec do
 
     def inspect_json("POST", conn) do
         request_body = conn.body_params
-            if (request_body["data"] == nil || request_body["data"]["attributes"] == nil) do
-                conn
-                |> put_status(:bad_request)
-                |> json(%{errors: %{detail: "Bad Request"}})
-                |> halt()
-            end
+        if (request_body["data"] == nil || request_body["data"]["attributes"] == nil) do
+            conn
+            |> put_status(:bad_request)
+            |> json(%{errors: %{detail: "Bad Request"}})
+            |> halt()
+        end
         conn
     end
 
