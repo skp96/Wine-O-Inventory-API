@@ -18,4 +18,23 @@ defmodule WineOInventoryApi.Products do
   def list_wines do
     Repo.all(Wine)
   end
+
+  @doc """
+  Creates a wine.
+
+  ## Examples
+
+    iex> create_wine(%{field: value})
+    {:ok, %Wine{}}
+
+    iex> create_wine(%{field: bad value})
+    {:error, %Ecto.Changeset{}}
+
+  """
+
+  def create_wine(attrs) do
+    %Wine{}
+    |> Wine.changeset(attrs)
+    |> Repo.insert()
+  end
 end
