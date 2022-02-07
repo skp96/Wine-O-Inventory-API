@@ -8,6 +8,9 @@ defmodule WineOInventoryApi.Products.Wine do
     field :quantity, :integer
     field :rating, :integer
 
+    many_to_many :stores, WineOInventoryApi.Businesses.Store,
+      join_through: "store_wines"
+
     timestamps()
   end
 
@@ -15,6 +18,7 @@ defmodule WineOInventoryApi.Products.Wine do
   def changeset(wine, attrs) do
     wine
     |> cast(attrs, [:name, :description, :rating, :quantity])
+    |> cast_assoc(:stores)
     |> validate_inclusion(:rating, 0..5)
     |> validate_required([:name, :description, :rating, :quantity])
   end
