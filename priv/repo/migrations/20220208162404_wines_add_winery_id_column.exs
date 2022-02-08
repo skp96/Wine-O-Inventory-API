@@ -3,7 +3,7 @@ defmodule WineOInventoryApi.Repo.Migrations.WinesAddWineryIdColumn do
 
   def change do
     alter table("wines") do
-      add :winery_id, references(:wineries)
+      add :winery_id, references(:wineries, on_delete: :nilify_all)
     end
 
     create index("wines", [:winery_id])
