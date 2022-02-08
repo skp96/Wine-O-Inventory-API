@@ -13,6 +13,9 @@ defmodule WineOInventoryApi.Products.Wine do
 
     belongs_to :winery, WineOInventoryApi.Businesses.Winery
 
+    many_to_many :inventories, WineOInventoryApi.Inventories.Inventory,
+      join_through: "inventory_wines"
+
     timestamps()
   end
 
