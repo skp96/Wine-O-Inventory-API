@@ -12,6 +12,5 @@ defmodule WineOInventoryApi.Inventories.Inventory do
   def changeset(inventory, attrs) do
     inventory
     |> cast(attrs, [])
-    |> validate_required([])
   end
 end
