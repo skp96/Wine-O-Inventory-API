@@ -11,6 +11,8 @@ defmodule WineOInventoryApi.Products.Wine do
     many_to_many :stores, WineOInventoryApi.Businesses.Store,
       join_through: "store_wines"
 
+    belongs_to :winery, WineOInventoryApi.Businesses.Winery
+
     timestamps()
   end
 
@@ -19,6 +21,7 @@ defmodule WineOInventoryApi.Products.Wine do
     wine
     |> cast(attrs, [:name, :description, :rating, :quantity])
     |> cast_assoc(:stores)
+    |> cast_assoc(:winery)
     |> validate_inclusion(:rating, 0..5)
     |> validate_required([:name, :description, :rating, :quantity])
   end
