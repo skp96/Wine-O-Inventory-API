@@ -3,6 +3,8 @@ defmodule WineOInventoryApi.ProductsTest do
 
   alias WineOInventoryApi.Products
 
+  import WineOInventoryApi.ProductsFixtures
+
   describe "wines" do
     alias WineOInventoryApi.Products.Wine
 
@@ -23,6 +25,11 @@ defmodule WineOInventoryApi.ProductsTest do
 
     test "create_wine/1 with invalid data returns an error changset" do
       assert {:error, %Ecto.Changeset{}} = Products.create_wine(@invalid_attrs)
+    end
+
+    test "list_wines_with_stores_with_winery/0 returns all wines along with associated stores and winery" do
+      create_wine_with_assoc_fixture()
+      assert Products.list_wines_with_stores_with_winery() != []
     end
   end
 end
