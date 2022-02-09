@@ -5,6 +5,9 @@ defmodule WineOInventoryApi.Inventories.Inventory do
   schema "inventories" do
     belongs_to :member, WineOInventoryApi.Users.Member
 
+    many_to_many :wines, WineOInventoryApi.Products.Wine,
+      join_through: "inventory_wines"
+
     timestamps()
   end
 
