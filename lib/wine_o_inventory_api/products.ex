@@ -26,15 +26,16 @@ defmodule WineOInventoryApi.Products do
             left_join: sw in "store_wines", on: sw.wine_id == wine.id,
             left_join: store in "stores", on: store.id == sw.store_id,
             left_join: winery in "wineries", on: wine.winery_id == winery.id,
-            select: %{wine_name: wine.name,
-                      wine_description: wine.description,
-                      wine_rating: wine.rating,
-                      wine_quantity: wine.quantity,
-                      store_name: store.name,
-                      store_location: store.location,
-                      winery_name: winery.name,
-                      winery_location: winery.location
-                    }
+            select: %{
+              wine_name: wine.name,
+              wine_description: wine.description,
+              wine_rating: wine.rating,
+              wine_quantity: wine.quantity,
+              store_name: store.name,
+              store_location: store.location,
+              winery_name: winery.name,
+              winery_location: winery.location
+            }
                     
     Repo.all(query)
   end

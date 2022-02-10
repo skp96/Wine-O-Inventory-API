@@ -12,6 +12,10 @@
 
 alias WineOInventoryApi.Products.Wine
 alias WineOInventoryApi.Repo
+alias WineOInventoryApi.Inventories.Inventory
+import Ecto.Changeset
+
+inventories = Repo.all(Inventory)
 
 wine_1 = %{
     name: "Josh Cellars",
@@ -22,6 +26,7 @@ wine_1 = %{
     winery: %{name: "Josh Cellars"}
 }
 Wine.changeset(%Wine{}, wine_1)
+|> put_assoc(:inventories, [Enum.at(inventories, 0), Enum.at(inventories, 1)])
 |> Repo.insert!()
 
 wine_2 = %{
@@ -33,6 +38,7 @@ wine_2 = %{
     winery: %{name: "Bodega Norton"}
 }
 Wine.changeset(%Wine{}, wine_2)
+|> put_assoc(:inventories, [Enum.at(inventories, 2), Enum.at(inventories, 3)])
 |> Repo.insert!()
 
 wine_3 = %{
@@ -44,6 +50,7 @@ wine_3 = %{
     winery: %{name: "Veuve Clicquot"}
 }
 Wine.changeset(%Wine{}, wine_3)
+|> put_assoc(:inventories, [Enum.at(inventories, 2), Enum.at(inventories, 0)])
 |> Repo.insert!()
 
 wine_4 = %{
@@ -54,6 +61,7 @@ wine_4 = %{
     winery: %{name: "Bartenura"}
 }
 Wine.changeset(%Wine{}, wine_4)
+|> put_assoc(:inventories, [Enum.at(inventories, 1)])
 |> Repo.insert!()
 
 wine_5 = %{
@@ -64,5 +72,6 @@ wine_5 = %{
     stores: [%{name: "Santa's Wine Store"}]
 }
 Wine.changeset(%Wine{}, wine_5)
+|> put_assoc(:inventories, [Enum.at(inventories, 0), Enum.at(inventories, 1), Enum.at(inventories, 2), Enum.at(inventories, 3)])
 |> Repo.insert!()
 
