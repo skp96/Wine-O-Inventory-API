@@ -3,6 +3,8 @@ defmodule WineOInventoryApi.UsersTest do
 
     alias WineOInventoryApi.Users
 
+    import WineOInventoryApi.UsersFixtures
+
     describe "members" do
         alias WineOInventoryApi.Users.Member
 
@@ -18,12 +20,44 @@ defmodule WineOInventoryApi.UsersTest do
             assert {:error, %Ecto.Changeset{}} = Users.create_member(@invalid_attrs)
         end
 
-        test "list_all_member_wines/1 returns all user wines" do
-            assert Users.list_all_member_wines("test") == []
+        test "list_all_member_wines/1 returns all member wines" do
+            create_member_with_assoc_fixture()
+            assert Users.list_all_member_wines("some member") == [
+                %{
+                    member: "some member",
+                    wine_name: "some wine",
+                    wine_description: "some description",
+                    wine_rating: 5,
+                    wine_quantity: 10,
+                    store_name: "some store",
+                    store_location: nil,
+                    winery_name: "some winery",
+                    winery_location: nil,
+                }
+            ]
         end
 
-        test "list_member_wines_from_winery/2 returns all wines from a specific inventory" do
-            assert Users.list_member_wines_from_winery("test", "test winery") == []
+        test "list_all_member_wines/1 returns an empty list when member is not found " do
+            assert Users.list_all_member_wines("some member") == []
+        end
+
+        test "list_member_wines_from_winery/2 returns all wines from a specific winery" do
+            create_member_with_assoc_fixture()
+            assert Users.list_member_wines_from_winery("some member", "some winery") == [
+                %{
+                    name: "some member",
+                    wine: "some wine"
+                }
+            ]
+        end
+
+        test "list_member_wines_from_winery/2 returns empty list when member is not found" do
+            assert Users.list_member_wines_from_winery("some member", "some winery") == []
+        end
+
+        test "list_member_wines_from_winery/2 returns empty list when winery is not found" do
+            create_member_with_assoc_fixture()
+            assert Users.list_member_wines_from_winery("some member", "some other winery") == []
         end
     end
 end

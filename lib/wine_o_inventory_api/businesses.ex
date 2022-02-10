@@ -8,6 +8,12 @@ defmodule WineOInventoryApi.Businesses do
 
   import Ecto.Query
 
+  def create_store(attrs) do
+    %Store{}
+    |> Store.changeset(attrs)
+    |> Repo.insert()
+  end
+
   def list_wines_with_rating_from_winery(store, rating, winery_name) do
     subq = from winery in "wineries",
             where: winery.name == ^winery_name,
@@ -21,6 +27,4 @@ defmodule WineOInventoryApi.Businesses do
 
     Repo.all(query)
   end
-
-
 end
