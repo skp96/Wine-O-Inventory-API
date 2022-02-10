@@ -21,5 +21,9 @@ defmodule WineOInventoryApi.UsersTest do
         test "list_all_member_wines/1 returns all user wines" do
             assert Users.list_all_member_wines("test") == []
         end
+
+        test "list_member_wines_from_winery/2 returns all wines from a specific inventory" do
+            assert Users.list_member_wines_from_winery("test", "test winery") == []
+        end
     end
 end
