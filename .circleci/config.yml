@@ -1,6 +1,6 @@
 version: 2 
 jobs:  # basic units of work in a run
-  build:  # runs not using Workflows must have a `build` job as entry point
+  elixir_build_test:  # runs not using Workflows must have a `build` job as entry point
     parallelism: 1  # run only one instance of this job
     docker:  # run the steps with Docker
       - image: circleci/elixir:1.12.3  # ...with this image as the primary container; this is where all `steps` will run
@@ -47,3 +47,45 @@ jobs:  # basic units of work in a run
       - store_test_results:  # upload junit test results for display in Test Summary
           # Read more: https://circleci.com/docs/2.0/collect-test-data/
           path: _build/test/lib/wine_o_inventory_api # Replace with the name of your :app
+
+  node_build_test:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: cimg/node:15.1
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+
+    working_directory: ~/app  # directory where steps will run
+
+    steps:
+      - checkout
+      - restore_cache:
+          # See the configuration reference documentation for more details on using restore_cache and save_cache steps
+          # https://circleci.com/docs/2.0/configuration-reference/?section=reference#save_cache
+          keys:
+            - node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
+            - node-deps-v1-
+      - run:
+          name: install packages
+          working_directory: ~/app/client
+          command: npm install
+      - save_cache:
+          key: node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
+          paths:
+            - ~/.npm
+            - node_modules
+            - ~/.cache
+      - run:
+          name: Run Tests
+          working_directory: ~/app/client
+          command: npm run test
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - elixir_build_test
+      - node_build_test
