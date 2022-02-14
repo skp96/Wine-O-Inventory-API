@@ -1,0 +1,176 @@
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+}
+
+.data-grid-container {
+  height: 500px;
+  width: 65vw;
+}
+
+.error-style {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: red;
+  align-items: center;
+}
+
+.title-welcome {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 1rem;
+  color: white;
+}
+
+.loading,
+.title-inventory,
+.empty-list {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 1rem;
+  color: white;
+}
+
+.MuiDataGrid-row {
+  color: white;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  color: white;
+}
+
+.MuiTablePagination-displayedRows {
+  color: white;
+}
+
+.MuiSvgIcon-root {
+  color: white;
+}
+
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 275px;
+  background-color: whitesmoke;
+  border-radius: 0.3rem;
+  padding: 2rem;
+}
+
+.error-list {
+  list-style: disc;
+}
+
+.form-head-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.form-header {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 0.5rem;
+}
+
+.form-label {
+  font-family: "Roboto", sans-serif;
+}
+
+input {
+  font-family: "Roboto", sans-serif;
+  height: 1.5rem;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .title-welcome {
+    font-size: 2.5rem;
+  }
+
+  .title-inventory,
+  .empty-list {
+    font-size: 2rem;
+  }
+
+  .error-style {
+    font-size: 2rem;
+  }
+
+  .modal-box {
+    width: 450px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .title-welcome {
+    font-size: 3rem;
+  }
+
+  .title-inventory,
+  .empty-list {
+    font-size: 2rem;
+  }
+
+  .error-style {
+    font-size: 2rem;
+  }
+
+  .modal-box {
+    width: 500px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .title-welcome {
+    font-size: 4rem;
+  }
+
+  .title-inventory,
+  .empty-list {
+    font-size: 3rem;
+  }
+
+  .error-style {
+    font-size: 2rem;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .title-welcome {
+    font-size: 5rem;
+  }
+
+  .title-inventory,
+  .empty-list {
+    font-size: 4rem;
+  }
+
+  .error-style {
+    font-size: 2rem;
+  }
+}
