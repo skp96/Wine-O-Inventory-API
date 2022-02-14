@@ -24,3 +24,6 @@ wine_o_inventory_api-*.tar
 
 # Environment Variables
 /.envrc
+
+# React build files
+/priv/static
