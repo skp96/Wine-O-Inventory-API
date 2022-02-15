@@ -45,7 +45,8 @@ defmodule WineOInventoryApi.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:cors_plug, "~> 2.0"},
-      {:phoenix_html, "~> 3.2.0"}
+      {:phoenix_html, "~> 3.2.0"},
+      {:esbuild, "~> 0.3", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -60,7 +61,12 @@ defmodule WineOInventoryApi.MixProject do
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      "assets.deploy": [
+        "cd client npm run build",
+        "esbuild default --minify",
+        "phx.digest"
+      ]
     ]
   end
 end
