@@ -18,9 +18,15 @@ defmodule WineOInventoryApiWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :wine_o_inventory_api,
+    from: {:wine_o_inventory_api, "priv/static"},
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    only:
+      ~w(assets fonts images favicon.ico robots.txt asset-manifest.json manifest.json logo192.png logo512.png)
+
+  plug Plug.Static,
+    at: "/static",
+    from: {:wine_o_inventory_api, "priv/static/static"},
+    gzip: false
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

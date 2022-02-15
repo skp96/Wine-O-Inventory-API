@@ -14,6 +14,16 @@ defmodule WineOInventoryApiWeb.Router do
     post "/wines", WineController, :create
   end
 
+  pipeline :browser do
+    plug :accepts, ["html"]
+  end
+
+  scope "/", WineOInventoryApiWeb do
+    pipe_through :browser
+
+    get "/", PageController, :index
+  end
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put

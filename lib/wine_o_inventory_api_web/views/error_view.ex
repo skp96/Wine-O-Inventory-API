@@ -20,6 +20,10 @@ defmodule WineOInventoryApiWeb.ErrorView do
     %{errors: %{detail: "Internal Server Error"}}
   end
 
+  def render("500.html", _assigns) do
+    "Server internal error"
+  end
+
   # By default, Phoenix returns the status message from
   # the template name. For example, "404.json" becomes
   # "Not Found".
