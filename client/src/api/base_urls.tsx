@@ -1,1 +1,1 @@
-export const getWinesUrl = "http://localhost:4000/api/wines"
+export const getWinesUrl = process.env.REACT_APP_API_GET_WINE_URL as string
