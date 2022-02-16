@@ -1,1 +1,1 @@
-export const getWinesUrl = process.env.REACT_APP_API_GET_WINE_URL as string
+export const getWinesUrl = (process.env.NODE_ENV == 'production' ? "https://wine-o-inventory.herokuapp.com/api/wines" : "http://localhost:4000/api/wines")
