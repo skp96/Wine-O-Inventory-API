@@ -1,4 +1,6 @@
-version: 2 
+version: 2.1
+orbs:
+  heroku: circleci/heroku@1.2.6
 jobs:  # basic units of work in a run
   elixir_build_test:  # runs not using Workflows must have a `build` job as entry point
     parallelism: 1  # run only one instance of this job
@@ -84,8 +86,15 @@ jobs:  # basic units of work in a run
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  version: 2
-  build_and_test:
+  version: 2.1
+  heroku_deploy:
     jobs:
       - elixir_build_test
       - node_build_test
+      - heroku/deploy-via-git:
+          requires:
+            - elixir_build_test
+            - node_build_test
+          filters:
+            branches:
+              only: main
