@@ -1,3 +1,3 @@
 export const Title = () => {
-    return <h1 className="title-welcome">Welcome to Wine-O Inventory, Your Favorite App</h1>
+    return <h1 className="title-welcome">Welcome to Wine-O Inventory</h1>
 }
