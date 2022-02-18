@@ -21,7 +21,7 @@ export const WineList: React.FC<{
             headerAlign: "center",
             align: "center",
             width: 300
-            
+
         },
         {
             field: "description",
@@ -44,23 +44,23 @@ export const WineList: React.FC<{
         }
     ]
 
-    const rows = winesList
+    const rows = [winesList[10]]
 
     return (
-        <>  
+        <>
             <h2 data-testid="show-inventory" className="title-inventory">Wine Inventory</h2>
-            {error && <Error error={error} /> }
+            {error && <Error error={error} />}
             {winesList.length ? (
                 <div className='data-grid-container'>
                     <DataGrid
-                    rowHeight={100}
-                    rows={rows}
-                    columns={columns}
-                    pageSize={5}
-                    rowsPerPageOptions={[5]}
+                        rowHeight={100}
+                        rows={rows}
+                        columns={columns}
+                        pageSize={5}
+                        rowsPerPageOptions={[5]}
                     />
                 </div>
-            ): (
+            ) : (
                 null
             )}
         </>
