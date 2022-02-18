@@ -7,6 +7,8 @@
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.3.1",
     "@mui/x-data-grid": "^5.3.0",
+    "@sentry/react": "^6.17.9",
+    "@sentry/tracing": "^6.17.9",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -25,7 +27,8 @@
     "start": "react-scripts start",
     "build": "BUILD_PATH='../priv/static' react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:production": "env-cmd -f .env.production npm run build"
   },
   "eslintConfig": {
     "extends": [
