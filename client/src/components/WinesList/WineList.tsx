@@ -44,7 +44,7 @@ export const WineList: React.FC<{
         }
     ]
 
-    const rows = [winesList[10]]
+    const rows = winesList
 
     return (
         <>
