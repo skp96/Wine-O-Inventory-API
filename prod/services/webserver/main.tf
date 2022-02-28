@@ -10,9 +10,8 @@ provider "aws" {
 resource "aws_instance" "web" {
     ami = "ami-0c55b159cbfafe1f0"
     instance_type = "t2.micro"
-    vpc_security_group_ids = [aws_security_group.instance.id]
-    associate_public_ip_address = true
-    key_name = "deployer_key"
+    vpc_security_group_ids = [aws_security_group.ssh.id]
+    key_name = "AWS EC2 - Wine-O-Inventory"
 
     user_data = file("prod_setup.sh")
 
@@ -21,19 +20,27 @@ resource "aws_instance" "web" {
     }
 }
 
-resource "aws_security_group" "instance" {
-    name = "wine_o_inventory_security_group"
+resource "aws_security_group" "ssh" {
+    name = "wine_o_inventory_security_group_ssh"
 
     ingress {
-        from_port = 8080
-        to_port = 8080
+        from_port = 22
+        to_port = 22
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port = 443
+        to_port = 443
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port = 80
+        to_port = 80
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
 }
-
-resource "aws_key_pair" "deployer" {
-    key_name = "deployer_key"
-    public_key = var.aws_deployer_key
-}
-

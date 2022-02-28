@@ -12,15 +12,15 @@ sudo apt-get update -y
 
 # Install Elixir and Erlang
 sudo apt-get install -y esl-erlang
-sudo apt-get install -y elixir=1.13.3
+sudo apt-get install -y elixir
 
 # Install node.js
-sudo apt-get install -y nodejs=17.5.0
-suod apt-get install -y npm=8.4.1
+curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 # Clone Repository
 git clone https://github.com/skp96/Wine-O-Inventory-API.git
-cd wine_o_inventory_api || exit
+cd Wine-O-Inventory-API || exit
 
 # Install phoenix dependencies
 mix deps.get
