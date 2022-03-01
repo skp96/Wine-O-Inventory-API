@@ -34,6 +34,7 @@ cd Wine-O-Inventory-API
 
 # Install phoenix dependencies
 mix local.hex --force
+mix local.rebar --force
 mix deps.get
 
 # Install node dependencies
