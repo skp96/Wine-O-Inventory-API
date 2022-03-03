@@ -7,3 +7,8 @@ output "port" {
     value = aws_db_instance.wine_o_inventory_db.port
     description = "The port the database is listening on"
 }
+
+output "name" {
+    value = aws_db_instance.wine_o_inventory_db.name
+    description = "The name of the database"
+}
