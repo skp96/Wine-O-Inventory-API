@@ -35,9 +35,24 @@ cd Wine-O-Inventory-API
 # Install phoenix dependencies
 mix local.hex --force
 mix local.rebar --force
-mix deps.get
+mix deps.get --only prod
+MIX_ENV=prod mix compile
 
 # Install node dependencies
 npm --prefix ./client install
+
+# Build React Frontend
+npm --prefix ./client run build
+
+# Digest and compress static files
+MIX_ENV=prod mix phx.digest
+
+# Set Secret Key and Database URL
+export SECRET_KEY_BASE=$(mix phx.gen.secret)
+export DATABASE_URL="postgresql://${db_username}:${db_password}@${db_address}:${db_port}/${db_name}"
+
+MIX_ENV=prod mix ecto.migrate
+
+PORT=8080 MIX_ENV=prod mix phx.server
 
 
