@@ -10,7 +10,7 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :wine_o_inventory_api, WineOInventoryApiWeb.Endpoint,
-  url: [scheme: "https", host: "wine-o-inventory.herokuapp.com", port: 443],
+  url: [scheme: "https", host: "18.219.145.180", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
