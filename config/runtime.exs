@@ -40,7 +40,7 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "ec2-52-15-220-168.us-east-2.compute.amazonaws.com"
+  host = System.get_env("PHX_HOST") || "18.219.145.180"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :wine_o_inventory_api, WineOInventoryApiWeb.Endpoint,
