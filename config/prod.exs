@@ -11,7 +11,6 @@ import Config
 # before starting your production server.
 config :wine_o_inventory_api, WineOInventoryApiWeb.Endpoint,
   url: [scheme: "https", host: "18.219.145.180", port: 443],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
